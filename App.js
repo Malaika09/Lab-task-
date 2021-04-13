@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
+
 export default function App() {
   const[getrandom] = useState( Math.floor(Math.random()* 100))
   const [getText, setText] = useState("")
