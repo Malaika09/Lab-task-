@@ -7,92 +7,120 @@ export default function App() {
   const[getturn, setturn] = useState(0);
   const[getmodalvisible, setmodalvisible] = useState(false);
   const[getwinner, setwinner] = useState("");
+  const[getturn1, setturn1] = useState("o");
+  const[getturn2, setturn2] = useState("");
   const play = (arg) => {
     if(getturn == 0){
       if (arg == 1 && array[0] == ""){
         array[0] = "X";
         setturn(1);
+        setturn2("o");
+        setturn1("");
       }
       if(arg == 2 && array[1] == ""){
         array[1] = "X";
         setturn(1);
+        setturn2("o");
+        setturn1("");
       }
       if(arg == 3 && array[2] == ""){
         array[2] = "X";
         setturn(1);
+        setturn2("o");
+        setturn1("");
       }
       if(arg == 4 && array[3] == ""){
         array[3] = "X";
         setturn(1);
+        setturn2("o");
+        setturn1("");
       }
       if(arg == 5 && array[4] == ""){
         array[4] = "X";
         setturn(1);
+        setturn2("o");
+        setturn1("");
       }
 
       if(arg == 6 && array[5] == ""){
         array[5] = "X"; 
         setturn(1);
+        setturn2("o");
+        setturn1("");
       }
       if(arg == 7 && array[6] == ""){
         array[6] = "X";
         setturn(1);
-        
+        setturn2("o");
+        setturn1("");
       }
       if(arg == 8 && array[7] == ""){
         array[7] = "X";
         setturn(1);
-        
+        setturn2("o");
+        setturn1("");
       }
       if(arg == 9 && array[8] == ""){
         array[8] = "X";
         setturn(1); 
-        
+        setturn2("o");
+        setturn1("");
       }
     }
     else if(getturn == 1){
        if (arg == 1 && array[0] == ""){
         array[0] = "O";
-        setturn(0); 
-        
+        setturn(0);
+        setturn2(""); 
+        setturn1("o");
       }
       if(arg == 2 && array[1] == ""){
         array[1] = "O";
         setturn(0); 
-        
+         setturn2(""); 
+        setturn1("o");
       }
       if(arg == 3 && array[2] == ""){
         array[2] = "O";
         setturn(0); 
-        
+         setturn2(""); 
+        setturn1("o");
       }
       if(arg == 4 && array[3] == ""){
         array[3] = "O";
         setturn(0);
-        
-        
+         setturn2(""); 
+        setturn1("o");
       }
       if(arg == 5 && array[4] == ""){
         array[4] = "O";
         setturn(0);
-        
+         setturn2(""); 
+        setturn1("o");
       }
       if(arg == 6 && array[5] == ""){
         setturn(0);
         array[5] = "O"; 
+         setturn2(""); 
+        setturn1("o");
       }
       if(arg == 7 && array[6] == ""){
         setturn(0);
         array[6] = "O";
+         setturn2(""); 
+        setturn1("o");
       }
       if(arg == 8 && array[7] == ""){
         array[7] = "O";
         setturn(0);
+         setturn2(""); 
+        setturn1("o");
       }
       if(arg == 9 && array[8] == ""){
         array[8] = "O";
-        setturn(0);  
-        
+        setturn(0);    
+         setturn2(""); 
+        setturn1("o");
       }
     }
 
@@ -104,7 +132,7 @@ export default function App() {
       (array[2] == "X" && array[5] == "X" && array[8] == "X") || 
       (array[0] == "X" && array[4] == "X" && array[8] == "X") ||
       (array[2] == "X" && array[4] == "X" && array[6] == "X")) {
-        setwinner("Player 1 won!!");
+        setwinner("Player 1 won!! :D");
         setturn(11);
         setmodalvisible(true);
       }
@@ -116,7 +144,7 @@ export default function App() {
       (array[2] == "O" && array[5] == "O" && array[8] == "O") || 
       (array[0] == "O" && array[4] == "O" && array[8] == "O") ||
       (array[2] == "O" && array[4] == "O" && array[6] == "O")){
-          setwinner("Player 2 won!!");
+          setwinner("Player 2 won!! :D");
           setturn(11);
           setmodalvisible(true);
       }
@@ -127,7 +155,7 @@ export default function App() {
       ){
         setturn(11);
         setmodalvisible(true);
-        setwinner("It's a draw");
+        setwinner("It's a draw!!");
       }
   }
 
@@ -135,26 +163,33 @@ export default function App() {
        setmodalvisible(false);
        setwinner("");
        setturn(0);
+       setturn1("o");
+       setturn2("");
        for(var i = 0; i<9; i++){
           array[i] = "";
        }
   }
 
- 
   return (
     <View style={styles.container}>
     
     <Modal animationType="none" visible={getmodalvisible}>
-          <Text> {getwinner}</Text> 
-          <Button onPress = {playagain} title= "PLAY AGAIN"> </Button>
+    <View style={styles.container}>
+          <Text style={styles.title}> {getwinner}</Text> 
+          <View style= {styles.playag}> 
+            <Button color= "black" style ={styles.playagain} onPress = {playagain} title= "PLAY AGAIN"> </Button>
+          </View> 
+    </View>
+         
     </Modal>
 
-      <View>
-          <Text>Tit Tac Toe  </Text>
+      <View style={styles.t1}>
+          <Text style={styles.title}>Tit Tac Toe  </Text>
       </View>
 
-       <View>
-          <Text> Player 2 ( O )</Text>
+       <View style={styles.p2}>
+          <Text style = {styles.player}> {getturn2} </Text> 
+          <Text style={styles.player}> Player 2 ( O )</Text>
       </View>
 
       <View style={styles.button}>
@@ -198,8 +233,9 @@ export default function App() {
             <Text style={styles.text}> {array[8]} </Text> 
             </Pressable>
       </View>
-      <View>
-          <Text> Player 1 ( X ) </Text> 
+      <View style={styles.p1}>
+          <Text style = {styles.player}> {getturn1}  </Text> 
+          <Text style={styles.player}> Player 1 ( X ) </Text> 
       </View>
     </View>
   );
@@ -208,29 +244,29 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'black',
   },
   button: {
     flexDirection: 'row',
   },
   b :{
       borderRightStyle: 'solid', 
-      borderRightColor: 'black',
+      borderRightColor: 'white',
       borderRightWidth: 1,
       borderBottomStyle: 'solid', 
-      borderBottomColor: 'black',
+      borderBottomColor: 'white',
       borderBottomWidth: 1,
   },
   btm: {
       borderBottomStyle: 'solid', 
-      borderBottomColor: 'black',
+      borderBottomColor: 'white',
       borderBottomWidth: 1,
   },
   btmright :{
       borderRightStyle: 'solid', 
-      borderRightColor: 'black',
+      borderRightColor: 'white',
       borderRightWidth: 1,
   },
   text : {
@@ -240,6 +276,34 @@ const styles = StyleSheet.create({
       paddingTop: 35 ,
       fontSize: 20,
       paddingLeft: 30,
-  }
-
+      color: 'white',
+  },
+  title :{
+    color: 'white',
+    fontSize: 30, 
+    fontFamily: 'monospace',
+  },
+  t1: {
+      marginBottom: 100,
+      marginLeft: 40,
+  },
+  player: {
+    color: 'white',
+    fontSize: 15,
+  }, 
+  p1: {
+    flexDirection: 'row',
+    paddingTop: 30,
+  }, 
+  p2: {
+    flexDirection: 'row',
+    paddingBottom: 30,
+  },
+  playag: {
+    marginTop: 80,
+    width: 200,
+    height: 40, 
+    borderColor: 'white',
+    borderWidth: 1,
+  },
 });
