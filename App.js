@@ -125,6 +125,8 @@ export default function App() {
         array[4] !== "" && array[5] !== "" && array[6] !== "" && array[7] !== "" &&
         array[8]!== ""
       ){
+        setturn(11);
+        setmodalvisible(true);
         setwinner("It's a draw");
       }
   }
@@ -143,7 +145,7 @@ export default function App() {
     <View style={styles.container}>
     
     <Modal animationType="none" visible={getmodalvisible}>
-          <Text> hellow world {getwinner}</Text> 
+          <Text> {getwinner}</Text> 
           <Button onPress = {playagain} title= "PLAY AGAIN"> </Button>
     </Modal>
 
